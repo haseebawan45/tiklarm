@@ -1,0 +1,12 @@
+Index: flutter_local_notifications/FlutterLocalNotificationsPlugin.java
+===================================================================
+--- flutter_local_notifications/FlutterLocalNotificationsPlugin.java
++++ flutter_local_notifications/FlutterLocalNotificationsPlugin.java
+@@ -1016,7 +1016,7 @@
+   bigPictureStyle.bigPicture(bitmap);
+   if (hideExpandedLargeIcon) {
+-    bigPictureStyle.bigLargeIcon(null);
++    bigPictureStyle.bigLargeIcon((Bitmap) null);
+   }
+   return bigPictureStyle;
+ } 

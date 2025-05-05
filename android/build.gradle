@@ -1,0 +1,45 @@
+buildscript {
+    ext.kotlin_version = '1.8.0'
+    repositories {
+        google()
+        mavenCentral()
+        // Add alternative mirrors for better connectivity
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    // Flutter Plugin
+    id 'dev.flutter.flutter-gradle-plugin' version '1.0.0' apply false
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        // Add alternative mirrors for better connectivity
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.layout.buildDirectory
+}
